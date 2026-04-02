@@ -18,7 +18,10 @@ const date = post.data.date.toISOString().slice(0, 10);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <h1>{post.data.title}</h1>
-  <time datetime={date}>{date}</time>
+  <header>
+    <h1>{post.data.title}</h1>
+    <time datetime={date}>{date}</time>
+  </header>
   <Content />
+  <a href="/">&larr; Home</a>
 </BaseLayout>
