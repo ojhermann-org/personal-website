@@ -14,8 +14,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             bun
-            nodePackages.typescript-language-server
-            nodePackages.prettier
+            typescript-language-server
           ];
         };
       }
