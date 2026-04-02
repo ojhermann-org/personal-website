@@ -1,3 +1,13 @@
+[language-server.astro-language-server]
+command = "astro-ls"
+args = ["--stdio"]
+
+[[language]]
+name = "astro"
+language-servers = ["astro-language-server"]
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "astro"] }
+auto-format = true
+
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "superhtml"]
