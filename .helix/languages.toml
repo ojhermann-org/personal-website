@@ -31,3 +31,9 @@ name = "javascript"
 language-servers = ["typescript-language-server"]
 formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "babel"] }
 auto-format = true
+
+[[language]]
+name = "markdown"
+text-width = 80
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "markdown", "--prose-wrap", "always"] }
+auto-format = true
