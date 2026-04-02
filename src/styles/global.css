@@ -37,3 +37,11 @@ a {
   color: inherit;
   text-decoration: underline;
 }
+
+p + ul {
+  margin-top: 0;
+}
+
+p:has(+ ul) {
+  margin-bottom: 0;
+}
