@@ -35,14 +35,14 @@ bun run dev
 
 ## Common commands
 
-| Command                 | Purpose                              |
-| ----------------------- | ------------------------------------ |
-| `bun run dev`           | Start dev server at localhost:4321   |
-| `bun run build`         | Build to `dist/`                     |
-| `bun run preview`       | Preview the built site locally       |
-| `bun run typecheck`     | Run `astro check` (TypeScript)       |
-| `bun run format:check`  | Check formatting with prettier       |
-| `bun run format:write`  | Auto-format all files with prettier  |
+| Command                | Purpose                             |
+| ---------------------- | ----------------------------------- |
+| `bun run dev`          | Start dev server at localhost:4321  |
+| `bun run build`        | Build to `dist/`                    |
+| `bun run preview`      | Preview the built site locally      |
+| `bun run typecheck`    | Run `astro check` (TypeScript)      |
+| `bun run format:check` | Check formatting with prettier      |
+| `bun run format:write` | Auto-format all files with prettier |
 
 ## Content
 

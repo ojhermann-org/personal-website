@@ -1,10 +1,14 @@
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "superhtml"]
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "html"] }
+auto-format = true
 
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server"]
+formatter = { command = "node_modules/.bin/prettier", args = ["--parser", "css"] }
+auto-format = true
 
 [[language]]
 name = "typescript"
