@@ -3,44 +3,27 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
 );
 ---
 
 <BaseLayout>
   <header>
     <h1>Otto Hermann</h1>
+    <p>
+      <a href="mailto:otto@otto-hermann.me">Email</a> |
+      <a href="https://github.com/orgs/ojhermann-org/repositories">GitHub</a> |
+      <a href="https://www.linkedin.com/in/otto-hermann/">LinkedIn</a>
+    </p>
   </header>
 
-  <p>
-    Bio paragraph. Contact: <a href="mailto:otto@otto-hermann.me"
-      >otto@otto-hermann.me</a
-    >
-  </p>
-
-  <section>
-    <h2>Links (External)</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/orgs/ojhermann-org/repositories">GitHub</a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/otto-hermann/">LinkedIn</a>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Links (Internal)</h2>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-            <p>{post.data.description}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  {
+    posts.map((post) => (
+      <a href={`/blog/${post.slug}`}>
+        <h3>
+          {post.data.title}: {post.data.description}
+        </h3>
+      </a>
+    ))
+  }
 </BaseLayout>

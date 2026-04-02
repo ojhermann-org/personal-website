@@ -10,6 +10,8 @@ body {
   max-width: 65ch;
   margin: 0 auto;
   padding: 1.5rem 1rem;
+  background: #997e67;
+  color: #333;
 }
 
 img {
@@ -17,9 +19,19 @@ img {
   height: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #111;
-    color: #eee;
-  }
+header h1 {
+  margin-bottom: 0;
+}
+
+header p {
+  margin-top: 0.0625rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
