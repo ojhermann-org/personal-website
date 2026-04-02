@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Check for merge conflicts
+        run: |
+          if git grep -rn "^<<<<<<< \|^=======\|^>>>>>>> " -- ':!*.lock'; then
+            echo "Merge conflict markers found"
+            exit 1
+          fi
+
+      - name: Validate YAML
+        run: |
+          find . -name "*.yml" -o -name "*.yaml" \
+            | grep -v node_modules | grep -v .git \
+            | xargs -r python3 -c "
+          import yaml, sys
+          for f in sys.argv[1:]:
+              try:
+                  yaml.safe_load(open(f))
+              except yaml.YAMLError as e:
+                  print(f'Invalid YAML in {f}: {e}')
+                  sys.exit(1)
+          "
+
+      - name: Validate JSON
+        run: |
+          find . -name "*.json" \
+            -not -path "*/node_modules/*" -not -path "*/.git/*" \
+            | xargs -r python3 -c "
+          import json, sys
+          for f in sys.argv[1:]:
+              try:
+                  json.load(open(f))
+              except json.JSONDecodeError as e:
+                  print(f'Invalid JSON in {f}: {e}')
+                  sys.exit(1)
+          "
+
+      - name: Validate TOML
+        run: |
+          find . -name "*.toml" \
+            -not -path "*/node_modules/*" -not -path "*/.git/*" \
+            | xargs -r python3 -c "
+          import tomllib, sys
+          for f in sys.argv[1:]:
+              try:
+                  tomllib.load(open(f, 'rb'))
+              except tomllib.TOMLDecodeError as e:
+                  print(f'Invalid TOML in {f}: {e}')
+                  sys.exit(1)
+          "
+
+      - name: Format check
+        run: bun run format:check
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy to Cloudflare Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/ --project-name=personal-website --branch=main
