@@ -10,6 +10,8 @@ learn about me; it includes external links (e.g.
 [GitHub](https://github.com/orgs/ojhermann-org/repositories)) and entries, like
 this one.
 
+Technical stuff about this site:
+
 - [personal-website](https://github.com/ojhermann-org/personal-website) is the
   core web application
   - built with [Astro](https://astro.build/)
