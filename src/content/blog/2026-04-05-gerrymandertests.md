@@ -5,18 +5,24 @@ description: "what it is"
 order: 0
 ---
 
-I've started working with
+I'm working with
 [gerrymandertests](https://github.com/ojhermann-org/gerrymandertests) to improve
-my understanding of efficiently giving declarative input to
-[ClaudeCode](https://code.claude.com/docs/en/overview).
+my declarative use of [ClaudeCode](https://code.claude.com/docs/en/overview):
 
-I chose this repo because I know very little about it, but it seems accessible
-and could be useulf to people studying and evaluating
-[gerrymandering](https://en.wikipedia.org/wiki/Gerrymandering); it also hasn't
-had any commits in ~3 years, so it's unlikely my refactoring, which will be done
-during down time, would have issues staying current with the
-[upstream rep](https://github.com/PrincetonUniversity/gerrymandertests).
+- I hope to better understand the correct level of abstraction to use when I
+  work on a repo using a common programming language in a domain that is new to
+  me.
+- I plan to refactor the repo using mostly declarative inputs:
+  - telling Claude what I want the code to do
+  - how to evaluate success
 
-I hope to refactor the repo using mostly declarative inputs, specifically
-telling Claude what I want the code to do and how to evaluate the achievement of
-that, both via prompts and in comments on PRs.
+I've chosen this repo because:
+
+- it seems like it could be useful in quantifying
+  [gerrymandering](https://en.wikipedia.org/wiki/Gerrymandering), particularly
+  if it was made easier to use
+- the last commit to the
+  [upstream repo](https://github.com/PrincetonUniversity/gerrymandertests) was
+  ~3 years ago, so I think there's a low probability of a drift between what I'm
+  refactoring from and the
+  [upstream repo](https://github.com/PrincetonUniversity/gerrymandertests)
