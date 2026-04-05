@@ -71,6 +71,9 @@ jobs:
                   sys.exit(1)
           "
 
+      - name: Spell check
+        uses: crate-ci/typos@v1
+
       - name: Format check
         run: bun run format:check
 
