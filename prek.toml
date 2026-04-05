@@ -16,6 +16,7 @@ hooks = [
 [[repos]]
 repo = "local"
 hooks = [
+  {id = "typos",        name = "typos",        entry = "typos",             language = "system", pass_filenames = false},
   {id = "format-check", name = "format-check", entry = "bun run format:check", language = "system", pass_filenames = false},
   {id = "typecheck",    name = "typecheck",    entry = "bun run typecheck",    language = "system", pass_filenames = false},
   {id = "build",        name = "build",        entry = "bun run build",        language = "system", pass_filenames = false},
